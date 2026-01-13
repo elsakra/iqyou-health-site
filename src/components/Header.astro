@@ -45,9 +45,10 @@
           </button>
         </div>
         
-        <a href="#consultations" class="text-brand-dark hover:text-brand-orange transition-colors">Consultations</a>
-        <a href="#lab-testing" class="text-brand-dark hover:text-brand-orange transition-colors">Lab Testing</a>
-        <a href="#about" class="text-brand-dark hover:text-brand-orange transition-colors">About</a>
+        <a href="#consultations" class="text-brand-dark hover:text-brand-orange transition-colors scroll-link">Consultations</a>
+        <a href="#lab-testing" class="text-brand-dark hover:text-brand-orange transition-colors scroll-link">Lab Testing</a>
+        <a href="#about" class="text-brand-dark hover:text-brand-orange transition-colors scroll-link">About</a>
+        <a href="#contact" class="text-brand-dark hover:text-brand-orange transition-colors scroll-link">Contact</a>
       </nav>
 
       <!-- Desktop Actions -->
@@ -59,15 +60,64 @@
           <img src="https://res.cloudinary.com/dil14r8je/image/upload/v1768288494/auto-site-builder/IQYOU%20Health/image_4.png" alt="Cart" class="w-6 h-6" />
           <span class="absolute -top-2 -right-2 bg-brand-orange text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
         </button>
-        <button class="btn-primary">Shop Now</button>
       </div>
 
       <!-- Mobile Menu Button -->
-      <div class="lg:hidden">
-        <button class="text-brand-dark hover:text-brand-orange transition-colors">
-          <img src="https://res.cloudinary.com/dil14r8je/image/upload/v1768288496/auto-site-builder/IQYOU%20Health/image_7.png" alt="Menu" class="w-6 h-6" />
-        </button>
-      </div>
+      <button class="lg:hidden text-brand-dark hover:text-brand-orange transition-colors" id="mobile-menu-button">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="lg:hidden hidden" id="mobile-menu">
+      <nav class="py-4 space-y-4 border-t border-gray-200">
+        <a href="#consultations" class="block text-brand-dark hover:text-brand-orange transition-colors scroll-link">Consultations</a>
+        <a href="#lab-testing" class="block text-brand-dark hover:text-brand-orange transition-colors scroll-link">Lab Testing</a>
+        <a href="#about" class="block text-brand-dark hover:text-brand-orange transition-colors scroll-link">About</a>
+        <a href="#contact" class="block text-brand-dark hover:text-brand-orange transition-colors scroll-link">Contact</a>
+      </nav>
     </div>
   </div>
 </header>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+  
+  // Smooth scrolling for navigation links
+  document.addEventListener('DOMContentLoaded', function() {
+    const scrollLinks = document.querySelectorAll('.scroll-link');
+    
+    scrollLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          const headerHeight = document.querySelector('header').offsetHeight;
+          const targetPosition = targetElement.offsetTop - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+        
+        // Close mobile menu if open
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
