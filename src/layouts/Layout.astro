@@ -1,0 +1,54 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Trusted pharmacy offering personalized wellness solutions. Find vitamins, supplements, and custom nutrition plans. Expert care in Bethesda and online." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="IQYOU Health" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Pharmacy",
+      "name": "IQYOU Health",
+      "description": "Trusted pharmacy offering personalized wellness solutions. Find vitamins, supplements, and custom nutrition plans.",
+      "url": "https://iqyouhealth.com",
+      "telephone": "+1-301-530-5808",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bethesda",
+        "addressRegion": "MD",
+        "addressCountry": "US"
+      },
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "priceRange": "$$"
+    }
+    </script>
+  </head>
+  <body class="bg-brand-cream text-brand-dark font-sans antialiased">
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import FeaturedProducts from '../components/FeaturedProducts.astro';
+import HealthConcerns from '../components/HealthConcerns.astro';
+import TrustedBrands from '../components/TrustedBrands.astro';
+import Testimonials from '../components/Testimonials.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="IQYOU Health: Maryland & DC Compounding Pharmacy | Personalized Wellness Solutions" 
+  description="Trusted pharmacy offering personalized wellness solutions. Find vitamins, supplements, and custom nutrition plans. Expert care in Bethesda and online."
+>
+  <Header />
+  <main>
+    <Hero />
+    <Services />
+    <FeaturedProducts />
+    <HealthConcerns />
+    <TrustedBrands />
+    <Testimonials />
+    <About />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
